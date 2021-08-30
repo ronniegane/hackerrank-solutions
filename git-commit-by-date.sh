@@ -3,11 +3,9 @@
 # Create the input file with the following:
 # find . -type d -links 2 -printf "%TY-%Tm-%TdT%TH:%TM:%.2TS %p\n" | sort -n > folder-modified-dates.txt
 
-while read -r res;
+while read -r date filepath;
 do
-    echo "$res";
-    date="$(echo "$res" | cut -d' ' -f1)";
-    filepath="$(echo "$res" | cut -d' ' -f2)";
+    echo "$date $filepath";
     if [[ $filepath == *"/."* ]]; then
       echo "dot folder, skipping";
     else
